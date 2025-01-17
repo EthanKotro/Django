@@ -2,9 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservation
 from .forms import ReservationForm
 
-def test_page(request):
-    return render(request,"test.html")
-
 def reservation_list(request):
     reservations=Reservation.objects.all().order_by('date', 'time')
     context = {'reservations':reservations}
