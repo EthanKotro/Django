@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Reservation Details</h2>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Name:</strong> {{ reservation.name }}</li>
+    <li class="list-group-item"><strong>Date:</strong> {{ reservation.date }}</li>
+    <li class="list-group-item"><strong>Time:</strong> {{ reservation.time }}</li>
+    <li class="list-group-item"><strong>Table Size:</strong> {{ reservation.table_size }}</li>
+</ul>
+<a href="{% url 'reservation_list' %}" class="btn btn-primary mt-3">Back to Reservations</a>
+{% endblock %}

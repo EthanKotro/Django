@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Reservations</h2>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Party Size</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ reservation.name }}</td>
+            <td>{{ reservation.date }}</td>
+            <td>{{ reservation.time }}</td>
+            <td>{{ reservation.table_size }}</td>
+            <td>
+                <a href="{% url 'edit_reservation' reservation.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_reservation' reservation.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                <a href="{% url 'reservation_detail' reservation.pk %}" class="btn btn-sm btn-info">View</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">You have no reservations yet.</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<p><a href="{% url 'create_reservation' %}" class="btn btn-primary">New Reservation</a></p>
+{% endblock %}
